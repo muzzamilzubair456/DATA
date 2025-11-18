@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="./images/fabef3bd-4722-492c-a3b9-ccf8f8f5f4ab (1).jpg">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<title>About - Data Timber Mart</title>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary px-3">
+  <div class="container-fluid">
+
+    <!-- LOGO -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="./images/fabef3bd-4722-492c-a3b9-ccf8f8f5f4ab (1).jpg" 
+           alt="logo" 
+           style="width: 140px; height:auto;">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- IMPORTANT: remove me-auto -->
+      <ul class="navbar-nav ms-3 mb-2 mb-lg-0 navbar>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="./index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="./about.html">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="./gallery.html">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="./contact.html">Contact Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="./arrival.html">New arrivals</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Our Products
+          </a>
+   <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./index.html #sapele">Sapheli</a></li>
+            <li><a class="dropdown-item" href="./index.html #barma">Barma teak</a></li>
+            <li><a class="dropdown-item" href="./index.html #african">Africa teak</a></li>
+            <li><a class="dropdown-item" href="./index.html #ash">Ash wood</a></li>
+            <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="./gallery.html">Explore our Gallery</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<!--
+INSTRUCTIONS:
+- Save this file as about.html
+- Replace image placeholders (e.g. images/about1.jpg, branch1/1.jpg ...) with your images.
+- For each slider folder use 3 images (you can use more; just update HTML).
+- All styling + JS are included below (no external libs).
+-->
+
+<style>
+  :root{
+    --brown:#9b6b32;
+    --brown-dark:#7a4f22;
+    --cream:#f7f1e6;
+    --white:#ffffff;
+    --muted:#6b5b4a;
+    --glass: rgba(255,255,255,0.65);
+    --card-shadow: 0 10px 28px rgba(22,18,14,0.12);
+    --glass-border: rgba(160,125,85,0.12);
+  }
+
+  /* Page reset */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(155,107,50,0.04), transparent 10%),
+      linear-gradient(180deg, #fffdfa 0%, #fcf7f2 100%);
+    color: #2b2b2b;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:32px auto;
+    padding:28px;
+  }
+
+  /* Header */
+  header{
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .title{
+    font-size:34px;
+    font-weight:800;
+    color:var(--brown-dark);
+    letter-spacing:0.2px;
+    margin:0;
+  }
+  .subtitle{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  /* Divider (brown gradient) */
+  .divider{
+    height:6px;
+    border-radius:8px;
+    margin:26px 0;
+    background: linear-gradient(90deg, rgba(155,107,50,0) 0%, var(--brown) 20%, var(--brown-dark) 80%, rgba(155,107,50,0) 100%);
+    box-shadow: 0 2px 10px rgba(155,107,50,0.06) inset;
+  }
+
+  /* ABOUT CARD (glass effect) */
+  .about-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.85));
+    border-radius:14px;
+    padding:26px;
+    box-shadow: var(--card-shadow);
+    border:1px solid var(--glass-border);
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    overflow:hidden;
+  }
+
+  .about-left{
+    flex:1;
+    min-width:0;
+  }
+  .about-left p{
+    margin:0;
+    font-size:16px;
+    color:#312a22;
+  }
+  .about-right{
+    width:360px;
+    min-width:200px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    align-items:center;
+  }
+
+  /* decorative pattern box */
+  .pattern{
+    width:100%;
+    height:120px;
+    border-radius:10px;
+    background-image:
+      linear-gradient(135deg, rgba(155,107,50,0.06) 15%, transparent 15%),
+      linear-gradient(225deg, rgba(155,107,50,0.04) 15%, transparent 15%);
+    background-size:28px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--brown-dark);
+    font-weight:700;
+    box-shadow: inset 0 -10px 30px rgba(155,107,50,0.03);
+  }
+
+  /* Main slider */
+  .main-slider{
+    margin-top:18px;
+    width:100%;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+    height:300px;
+    box-shadow: var(--card-shadow);
+  }
+  .slides{
+    width:100%;
+    height:100%;
+    position:relative;
+    touch-action: pan-y;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .slides img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transform:scale(1.03);
+    transition: opacity .6s ease, transform .85s ease;
+  }
+  .slides img.active{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  /* slider controls */
+  .slider-controls{
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    pointer-events:none;
+  }
+  .dots{display:flex;gap:8px; pointer-events:auto}
+  .dot{
+    width:10px;height:10px;border-radius:999px;
+    background:rgba(255,255,255,0.6);
+    border:1px solid rgba(120,80,40,0.12);
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    cursor:pointer;
+  }
+  .dot.active{background:var(--brown)}
+
+  .control-btn{
+    background: rgba(255,255,255,0.85);
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid var(--glass-border);
+    display:flex;
+    gap:8px;
+    align-items:center;
+    pointer-events:auto;
+    cursor:pointer;
+    color:var(--brown-dark);
+    font-weight:600;
+    font-size:14px;
+  }
+
+  /* Branch area grid */
+  .branches{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+    margin-top:26px;
+  }
+
+  .branch-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.85));
+    border-radius:14px;
+    padding:18px;
+    box-shadow: var(--card-shadow);
+    border:1px solid var(--glass-border);
+    overflow:hidden;
+  }
+  .branch-head{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:12px;
+  }
+  .loc-icon{
+    width:44px;height:44px;border-radius:10px;
+    background:linear-gradient(180deg,var(--cream),#fff);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(155,107,50,0.08);
+    box-shadow: 0 6px 14px rgba(155,107,50,0.04);
+    flex-shrink:0;
+  }
+  .branch-title{
+    font-size:18px;font-weight:700;color:var(--brown-dark);
+  }
+  .branch-addr{font-size:14px;color:var(--muted);margin-top:3px}
+
+  /* small slider per branch */
+  .mini-slider{
+    margin-top:10px;
+    width:100%;
+    height:160px;
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+  }
+  .mini-slider img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease;
+  }
+  .mini-slider img.active{opacity:1}
+
+  /* footer note */
+  .note{
+    margin-top:24px;
+    font-size:13px;color:var(--muted);text-align:center;
+  }
+
+  /* Responsive */
+  @media (max-width:900px){
+    .wrap{padding:18px}
+    .about-right{width:260px}
+    .main-slider{height:240px}
+  }
+  @media (max-width:720px){
+    .branches{grid-template-columns:1fr}
+    .about-card{flex-direction:column}
+    .about-right{width:100%}
+    .main-slider{height:200px}
+    .slides img{transition-duration:.5s}
+  }
+  @media (max-width:420px){
+    .title{font-size:24px}
+    .about-left p{font-size:15px}
+    .about-right .pattern{height:90px}
+    .main-slider{height:180px}
+  }
+
+  /* small accessibility focus */
+  .control-btn:focus, .dot:focus {outline:3px solid rgba(155,107,50,0.14)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <h1 class="title">About Data Timber Mart</h1>
+    <center><div class="subtitle">Premium timber since 1980 — Quality, trust & reliable supply</div></center>
+  </header>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- About glass card -->
+  <section class="about-card" aria-label="About our company">
+    <div class="about-left">
+      <!-- 13-line English paragraph (professional) -->
+      <p>
+        Data Timber Mart has proudly served the Karachi timber market since 1980. 
+        Located originally on Old Siddique Wahab Road, we started as a small family-owned supplier 
+        and have grown into a trusted name in both wholesale and retail timber solutions. 
+        Our product range includes premium Burma Teak, Malaysian hardwoods, Ash, Oak, Beech, 
+        and specialized timbers for furniture, flooring, and industrial use. With decades of 
+        experience we ensure all stock is properly seasoned, inspected, and sourced from trusted suppliers.
+        Customer satisfaction and transparent pricing are central to our business — whether a large contractor 
+        or a private customer, we provide product guidance, timely delivery and reliable after-sales support.
+        Our professional team helps clients choose the right timber for durability and design, ensuring value 
+        and long-lasting results. We remain committed to quality, trust and excellence as we move forward.
+      </p>
+    </div>
+
+    <aside class="about-right" aria-hidden="false">
+      <div class="pattern">DATA TIMBER MART</div>
+
+      <!-- Main slider (images replace here) -->
+      <div class="main-slider" aria-hidden="false">
+        <div class="slides" id="mainSlides" data-autoplay="true" data-interval="4000">
+          <img src="./images/WhatsApp Image 2025-11-14 at 02.45.51.jpeg" alt="Shop front and timber stacks 1" class="active">
+          <img src="images/WhatsApp Image 2025-11-14 at 02.01.29.jpeg" alt="Timber closeup 2">
+          <img src="images/WhatsApp Image 2025-11-14 at 02.45.51.jpeg" alt="Shop display 3">
+        </div>
+
+        <div class="slider-controls" aria-hidden="false">
+          <div class="control-btn" id="mainPrev" aria-label="Previous slide" role="button">‹ Prev</div>
+          <div class="dots" id="mainDots" role="tablist" aria-label="Main slider dots">
+            <!-- dots inserted via JS -->
+          </div>
+          <div class="control-btn" id="mainNext" aria-label="Next slide" role="button">Next ›</div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- Branches -->
+  <section aria-label="Branches">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <h2 style="margin:0;color:var(--brown-dark);font-size:20px">Our Branches</h2>
+      <div style="font-size:13px;color:var(--muted)">Swipe sliders on mobile • Auto-play enabled</div>
+    </div>
+
+    <div class="branches" style="margin-top:14px">
+
+      <!-- Branch 1 -->
+      <article class="branch-card" aria-labelledby="b1title">
+        <div class="branch-head">
+          <div class="loc-icon" aria-hidden="true">
+            <!-- simple location SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#7a4f22" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="#f3e7d8"/>
+              <circle cx="12" cy="9" r="2.6" fill="#7a4f22"/>
+            </svg>
+          </div>
+          <div>
+            <div id="b1title" class="branch-title">DATA- ALL SUBHAN — Timber Market</div>
+            <div class="branch-addr">Old Siddique Wahab Road, Karachi</div>
+          </div>
+        </div>
+
+        <div class="mini-slider" data-autoplay="true" data-interval="3500" data-slider="b1">
+          <img src="images/WhatsApp Image 2025-11-14 at 02.45.51.jpeg" alt="Branch 1 image 1" class="active">
+          <img src="images/WhatsApp Image 2025-11-14 at 02.01.29.jpeg" alt="Branch 1 image 2">
+          <img src="images/WhatsApp Image 2025-11-14 at 02.01.29.jpeg" alt="Branch 1 image 3">
+        </div>
+      </article>
+
+      <!-- Branch 2 -->
+      <article class="branch-card" aria-labelledby="b2title">
+        <div class="branch-head">
+          <div class="loc-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#7a4f22" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="#f3e7d8"/>
+              <circle cx="12" cy="9" r="2.6" fill="#7a4f22"/>
+            </svg>
+          </div>
+          <div>
+            <div id="b2title" class="branch-title">ZAM ZAM ENTERPRISSES </div>
+            <div class="branch-addr">Near Timber Market, Karachi</div>
+          </div>
+        </div>
+
+        <div class="mini-slider" data-autoplay="true" data-interval="3500" data-slider="b2">
+          <img src="images/goddown4.jpg" alt="Branch 2 image 1" class="active">
+          <img src="images/goddownandr.jpg" alt="Branch 2 image 2">
+          <img src="images/goddown3.jpg" alt="Branch 2 image 3">
+        </div>
+      </article>
+
+      <!-- Branch 3 -->
+      <article class="branch-card" aria-labelledby="b3title">
+        <div class="branch-head">
+          <div class="loc-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#7a4f22" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="#f3e7d8"/>
+              <circle cx="12" cy="9" r="2.6" fill="#7a4f22"/>
+            </svg>
+          </div>
+          <div>
+            <div id="b3title" class="branch-title">WARE HOUSE</div>
+            <div class="branch-addr">Usmanabad lyari south Karachi,pakistan </div>
+          </div>
+        </div>
+
+        <div class="mini-slider" data-autoplay="true" data-interval="3500" data-slider="b3">
+          <img src="./images/goddown1.jpg" alt="Branch 3 image 1" class="active">
+          <img src="images/download (2).jpg" alt="Branch 3 image 2">
+          <img src="images/goddown3.jpg" alt="Branch 3 image 3">
+        </div>
+      </article>
+
+      <!-- Branch 4 -->
+
+
+       
+      </article>
+
+    </div>
+  </section>
+
+  <div class="note"> <code></code></div>
+
+</div>
+
+<!-- Lightweight JS for autoplay, dots and touch swipe -->
+<script>
+(function(){
+  /* Utility: init slider with autoplay, dots, prev/next, touch support */
+  function Slider(container, options){
+    this.container = container;
+    this.slides = Array.from(container.querySelectorAll('img'));
+    this.current = 0;
+    this.timer = null;
+    this.autoplay = options.autoplay ?? false;
+    this.interval = options.interval || 4000;
+    this.dotsContainer = options.dotsContainer || null;
+    this.prevBtn = options.prevBtn || null;
+    this.nextBtn = options.nextBtn || null;
+
+    this.update = this.update.bind(this);
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
+    this.goTo = this.goTo.bind(this);
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
+    this.onPointer = this.onPointer.bind(this);
+
+    this._init();
+  }
+
+  Slider.prototype._init = function(){
+    // show first
+    this.slides.forEach((s,i)=> s.classList.toggle('active', i===0));
+
+    // dots
+    if(this.dotsContainer){
+      this.slides.forEach((_,i)=>{
+        const d = document.createElement('button');
+        d.className='dot' + (i===0? ' active':'');
+        d.setAttribute('aria-label','Go to slide '+(i+1));
+        d.addEventListener('click', ()=> this.goTo(i));
+        this.dotsContainer.appendChild(d);
+      });
+      this.dots = Array.from(this.dotsContainer.querySelectorAll('.dot'));
+    }
+
+    // prev/next
+    if(this.prevBtn) this.prevBtn.addEventListener('click', this.prev);
+    if(this.nextBtn) this.nextBtn.addEventListener('click', this.next);
+
+    // touch/pointer events for swipe
+    let startX = null, dx = 0, isPointer = false;
+    const el = this.container;
+
+    el.addEventListener('pointerdown', (e)=> {
+      isPointer = true;
+      startX = e.clientX;
+      this.stop();
+    });
+    window.addEventListener('pointermove', (e)=> {
+      if(!isPointer) return;
+      dx = e.clientX - startX;
+    });
+    window.addEventListener('pointerup', (e)=> {
+      if(!isPointer) return;
+      isPointer = false;
+      if(Math.abs(dx) > 40){
+        if(dx < 0) this.next(); else this.prev();
+      }
+      dx = 0;
+      if(this.autoplay) this.start();
+    });
+
+    // pause on hover/focus
+    this.container.addEventListener('mouseenter', ()=> this.stop());
+    this.container.addEventListener('mouseleave', ()=> { if(this.autoplay) this.start(); });
+
+    // keyboard support
+    this.container.addEventListener('keydown', (e)=> {
+      if(e.key === 'ArrowLeft') this.prev();
+      if(e.key === 'ArrowRight') this.next();
+    });
+
+    if(this.autoplay) this.start();
+  };
+
+  Slider.prototype.update = function(){
+    this.slides.forEach((s,i)=> s.classList.toggle('active', i===this.current));
+    if(this.dots) this.dots.forEach((d,i)=> d.classList.toggle('active', i===this.current));
+  };
+
+  Slider.prototype.next = function(){
+    this.current = (this.current + 1) % this.slides.length;
+    this.update();
+  };
+  Slider.prototype.prev = function(){
+    this.current = (this.current - 1 + this.slides.length) % this.slides.length;
+    this.update();
+  };
+  Slider.prototype.goTo = function(i){
+    this.current = i % this.slides.length;
+    this.update();
+  };
+  Slider.prototype.start = function(){
+    this.stop();
+    this.timer = setInterval(this.next, this.interval);
+  };
+  Slider.prototype.stop = function(){
+    if(this.timer) { clearInterval(this.timer); this.timer = null; }
+  };
+
+  // init main slider
+  const mainSlidesEl = document.getElementById('mainSlides');
+  if(mainSlidesEl){
+    const dotsEl = document.getElementById('mainDots');
+    const prevBtn = document.getElementById('mainPrev');
+    const nextBtn = document.getElementById('mainNext');
+    const autoplay = mainSlidesEl.dataset.autoplay === 'true';
+    const interval = Number(mainSlidesEl.dataset.interval) || 4000;
+    new Slider(mainSlidesEl, {autoplay, interval, dotsContainer: dotsEl, prevBtn, nextBtn});
+  }
+
+  // init all mini sliders
+  document.querySelectorAll('.mini-slider').forEach(function(ms){
+    const autoplay = ms.dataset.autoplay === 'true';
+    const interval = Number(ms.dataset.interval) || 3000;
+    new Slider(ms, {autoplay, interval});
+  });
+
+})();
+</script>
+<footer>
+    <div class="container">
+        <div class="footer-content-grid">
+            
+            <div class="footer-col company-info">
+                <div class="logo-box">
+                    <img src="./images/fabef3bd-4722-492c-a3b9-ccf8f8f5f4ab (1).jpg" alt="Mustafa Timber Mart Logo" class="footer-logo">
+                    <h4 class="company-name">Data Timber Mart</h4>
+                </div>
+                <p class="company-tagline">
+                    Pakistan's premier timber supplier since 2002. Quality products, trusted service.
+                </p>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="col-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="./gallery.html">Products</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="col-heading">Our Products</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hardwood</a></li>
+                    <li><a href="#">Softwood</a></li>
+                    <li><a href="#">Premium Timber</a></li>
+                    <li><a href="#">Plywood</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col contact-info-col">
+                <h4 class="col-heading">Contact Info</h4>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Karachi, Pakistan</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>+92-321-2626605</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>datatimberworldpvtltd@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <hr class="footer-divider">
+            <p class="copyright">
+                © 2025 Data Timber Mart. All rights reserved.
+            </p>
+            </div>
+    </div>
+</footer>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</html>
